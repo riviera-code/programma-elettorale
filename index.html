@@ -3,7 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bordighera Domani - Programma Integrale 2025</title>
+    
+    <!-- Meta Tags per SEO e Social (WhatsApp/Facebook) -->
+    <title>Bordighera Domani - Programma Elettorale 2025</title>
+    <meta name="description" content="Una città che torna a funzionare. E torna a crescere. Consulta il programma integrale di Bordighera Domani per le Elezioni Amministrative 2025.">
+    
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bordigheradomani.it/">
+    <meta property="og:title" content="Bordighera Domani - Programma Elettorale 2025">
+    <meta property="og:description" content="Una città che torna a funzionare. E torna a crescere. Consulta il programma integrale.">
+    <meta property="og:image" content="https://bordigheradomani.it/img/logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Bordighera Domani - Programma Elettorale 2025">
+    <meta property="twitter:description" content="Una città che torna a funzionare. E torna a crescere.">
+    <meta property="twitter:image" content="https://bordigheradomani.it/img/logo.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -135,7 +152,7 @@
                 <div class="flex justify-between items-center h-20">
                     <button onclick="showPage('home')" class="flex items-center gap-4 transition hover:opacity-80">
                         <img src="https://bordigheradomani.it/img/logo.png" alt="Logo" class="h-10 sm:h-12">
-                        <div class="hidden sm:block text-left">
+                        <div class="hidden md:block text-left">
                             <span class="block text-xs font-black text-blue-900 leading-none tracking-[0.15em] uppercase">Bordighera</span>
                             <span class="block text-xs font-black text-blue-600 leading-none tracking-[0.15em] uppercase">Domani</span>
                         </div>
@@ -144,8 +161,8 @@
                     <div class="flex items-center gap-4 sm:gap-8">
                         <button onclick="showPage('home')" class="text-slate-600 hover:text-blue-600 font-black text-[10px] uppercase tracking-widest transition">Home</button>
                         <button onclick="document.getElementById('feedback-modal').classList.remove('hidden')" 
-                            class="bg-blue-600 text-white px-5 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-700 transition shadow-lg shadow-blue-100">
-                            Feedback
+                            class="bg-green-500 text-white px-5 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-green-600 transition shadow-lg shadow-green-100 flex items-center gap-2">
+                            <i class="fab fa-whatsapp text-sm"></i> Feedback
                         </button>
                     </div>
                 </div>
@@ -153,9 +170,7 @@
         </nav>
 
         <!-- Main Content Area -->
-        <div id="page-content" class="min-h-screen">
-            <!-- Injected via JS -->
-        </div>
+        <div id="page-content" class="min-h-screen"></div>
 
         <!-- Footer -->
         <footer class="bg-white border-t border-slate-200 py-16 mt-12">
@@ -171,21 +186,27 @@
     <div id="feedback-modal" class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm hidden">
         <div class="bg-white rounded-[3rem] w-full max-w-lg p-10 shadow-2xl">
             <div class="flex justify-between items-center mb-8">
-                <h3 class="text-2xl font-black text-slate-900 uppercase tracking-tight">Feedback Candidato</h3>
+                <div class="flex items-center gap-3">
+                    <i class="fab fa-whatsapp text-2xl text-green-500"></i>
+                    <h3 class="text-2xl font-black text-slate-900 uppercase tracking-tight">Invia Feedback</h3>
+                </div>
                 <button onclick="document.getElementById('feedback-modal').classList.add('hidden')" class="text-slate-300 hover:text-slate-600 transition">
                     <i class="fas fa-times text-2xl"></i>
                 </button>
             </div>
             <div class="space-y-6">
+                <p class="text-sm text-slate-500 font-medium">Scrivi il tuo suggerimento. Premendo invia si aprirà WhatsApp per completare l'invio al coordinatore.</p>
                 <div>
-                    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Nome e Cognome</label>
-                    <input type="text" id="fb-name" class="w-full px-6 py-4 rounded-2xl border border-slate-200 outline-none focus:ring-4 focus:ring-blue-100 font-semibold">
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Tuo Nome e Cognome</label>
+                    <input type="text" id="fb-name" placeholder="Esempio: Mario Rossi" class="w-full px-6 py-4 rounded-2xl border border-slate-200 outline-none focus:ring-4 focus:ring-blue-100 font-semibold">
                 </div>
                 <div>
-                    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Commento Integrale</label>
-                    <textarea id="fb-text" rows="5" class="w-full px-6 py-4 rounded-2xl border border-slate-200 outline-none focus:ring-4 focus:ring-blue-100 font-semibold"></textarea>
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Nota o Suggerimento</label>
+                    <textarea id="fb-text" rows="5" placeholder="Cosa ne pensi di questa sezione?" class="w-full px-6 py-4 rounded-2xl border border-slate-200 outline-none focus:ring-4 focus:ring-blue-100 font-semibold"></textarea>
                 </div>
-                <button onclick="sendFeedback()" class="w-full bg-blue-600 text-white font-black py-5 rounded-2xl hover:bg-blue-700 transition uppercase tracking-[0.2em] text-xs">Invia al Team</button>
+                <button onclick="sendFeedback()" class="w-full bg-green-500 text-white font-black py-5 rounded-2xl hover:bg-green-600 transition uppercase tracking-[0.2em] text-xs shadow-xl shadow-green-100 flex items-center justify-center gap-2">
+                    Invia su WhatsApp <i class="fab fa-whatsapp"></i>
+                </button>
             </div>
         </div>
     </div>
@@ -195,7 +216,6 @@
             home: {
                 render: () => `
                     <div class="page-transition">
-                        <!-- Dashboard Header -->
                         <div class="bg-white border-b border-slate-200 py-24 px-4">
                             <div class="max-w-5xl mx-auto text-center">
                                 <span class="bg-blue-50 text-blue-600 px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-8 inline-block shadow-sm">Versione v17 - Integrale</span>
@@ -308,502 +328,206 @@
                     <div class="prose prose-slate max-w-none font-medium text-slate-700">
                         <p>La prima richiesta dei cittadini è semplice: una città curata. Oggi questo manca, ed è evidente nella vita quotidiana.</p>
                         <p>Strade sporche, marciapiedi trascurati, aiuole lasciate a sé stesse e punti di raccolta rifiuti problematici non sono dettagli secondari: incidono ogni giorno sulla qualità della vita e sull'immagine della città. È da qui che vogliamo ripartire.</p>
-                        <p>Il decoro urbano non è un intervento occasionale, ma un lavoro continuo. La differenza tra una città che funziona e una che non funziona sta nella costanza della manutenzione, nell'attenzione ai dettagli e nella capacità di intervenire in modo rapido ed efficace. La manutenzione non è una voce di spesa: è un investimento sulla reputazione della città, sulla qualità della vita dei cittadini e sull'attrattività turistica del territorio.</p>
-
+                        <p>Il decoro urbano non è un intervento occasionale, ma un lavoro continuo. La differenza tra una città che funziona e una che non funziona sta nella costanza della manutenzione, nell'attenzione ai dettagli e nella capacità di intervenire in modo rapido ed efficace.</p>
                         <h3>Piano straordinario per il decoro urbano</h3>
                         <ul>
                             <li>Pulizia straordinaria di strade, marciapiedi e sottopassi</li>
-                            <li>Sostituzione dei gettacarte e degli arredi urbani ormai arrugginiti e ammalorati</li>
+                            <li>Sostituzione dei gettacarte e degli arredi urbani ammalorati</li>
                             <li>Manutenzione delle aiuole e del verde pubblico</li>
                             <li>Interventi contro il degrado e le deiezioni canine</li>
-                            <li>Attenzione concreta alle frazioni (Sasso e Borghetto) e alle aree periferiche</li>
+                            <li>Attenzione concreta alle frazioni (Sasso e Borghetto)</li>
                         </ul>
-
                         <h3>Riforma del sistema di raccolta rifiuti</h3>
-                        <p>Il sistema attuale di raccolta rifiuti presenta criticità evidenti: è spesso complicato da utilizzare, poco funzionale e non sempre garantisce il livello di pulizia che la città merita. Interverremo per renderlo più semplice, efficiente e decoroso:</p>
                         <ul>
-                            <li>Semplificazione del sistema di conferimento, per renderlo accessibile a tutti, in particolare anziani, famiglie e turisti</li>
-                            <li>Miglioramento della pulizia e della manutenzione delle isole ecologiche</li>
-                            <li>Riqualificazione estetica dei punti di raccolta</li>
-                            <li>Controlli più efficaci contro l'abbandono dei rifiuti</li>
-                            <li>Soluzioni specifiche per semplificare la gestione dei rifiuti per imprese, ristoranti, alberghi e attività commerciali, attraverso un confronto diretto e costante con le categorie</li>
+                            <li>Semplificazione del sistema di conferimento</li>
+                            <li>Miglioramento pulizia isole ecologiche</li>
+                            <li>Riqualificazione estetica punti raccolta</li>
+                            <li>Soluzioni specifiche per imprese e hotel</li>
                         </ul>
-
-                        <h3>Manutenzione di strade e marciapiedi</h3>
-                        <ul>
-                            <li>Piano pluriennale di rifacimento delle strade più deteriorate</li>
-                            <li>Eliminazione delle barriere architettoniche</li>
-                            <li>Marciapiedi sicuri per anziani, famiglie e persone con disabilità</li>
-                        </ul>
-
-                        <h3>Illuminazione pubblica</h3>
-                        <ul>
-                            <li>Potenziamento dell'illuminazione nelle zone critiche</li>
-                            <li>Interventi prioritari su Via Romana e nei sottopassi</li>
-                            <li><strong>Obiettivo:</strong> risultati visibili entro i primi 6 mesi di amministrazione</li>
-                        </ul>
-
                         <div class="quote-box">
-                            Decoro urbano, gestione dei rifiuti e illuminazione pubblica non sono aspetti secondari. Sono ciò che determina, ogni giorno, se una città funziona oppure no. Quando questi elementi funzionano, la città cambia: diventa più vivibile per i cittadini, più accogliente per chi arriva, più attrattiva per il turismo e per le attività economiche. Una città pulita, ordinata e ben illuminata non è solo più bella. È una città che trasmette cura, rispetto e qualità. Intervenire con continuità su questi ambiti significa costruire una base solida su cui può crescere tutto il resto: economia, turismo, vita sociale.
+                            La manutenzione non è una voce di spesa: è un investimento sulla reputazione della città. Una città pulita, ordinata e ben illuminata trasmette cura, rispetto e qualità.
                         </div>
                     </div>
                 `
             },
             sec2: {
-                title: "2. VERDE URBANO: UN ASSET, NON UN COSTO",
+                title: "2. VERDE URBANO",
                 content: `
                     <div class="prose prose-slate max-w-none font-medium text-slate-700">
-                        <p>Il verde urbano non è solo un elemento estetico. È una scelta progettuale che incide sui costi, sulla qualità della città e sulla sua identità.</p>
-                        <p>Oggi, troppo spesso, il verde è gestito in modo frammentato, con interventi emergenziali e senza una visione complessiva. Questo genera costi elevati, risultati discontinui e una qualità urbana inferiore alle potenzialità del territorio. Vogliamo cambiare approccio.</p>
-                        <p>Il verde mal pianificato è costoso e inefficace. Il verde progettato con criteri botanici adeguati al territorio riduce i costi di gestione, migliora l'estetica urbana e diventa un elemento identitario.</p>
-
+                        <p>Il verde urbano non è solo estetica. È una scelta progettuale che incide sui costi e sull'identità. Il verde mal pianificato è costoso. Il verde progettato riduce i costi di gestione.</p>
                         <h3>Piano botanico strategico</h3>
                         <ul>
-                            <li>Utilizzo prevalente di specie resistenti al clima mediterraneo, a bassa manutenzione e con fioriture stagionali</li>
-                            <li>Riduzione strutturale dei costi di gestione nel tempo</li>
-                            <li>Progettazione delle aiuole e degli spazi verdi, superando la logica degli interventi emergenziali</li>
-                            <li>Piantumazione di nuovo verde urbano: palme e specie adattabili al clima mediterraneo, scelte per longevità e impatto visivo</li>
-                            <li>Manutenzione e valorizzazione del patrimonio botanico storico: palme, specie rare, giardini storici</li>
+                            <li>Utilizzo di specie resistenti al clima mediterraneo</li>
+                            <li>Riduzione strutturale dei costi di gestione</li>
+                            <li>Progettazione strategica vs interventi emergenziali</li>
+                            <li>Piantumazione di nuovo verde urbano (palme e specie autoctone)</li>
                         </ul>
-
-                        <h3>Il verde come attrazione turistica</h3>
-                        <ul>
-                            <li>Posizionamento di Bordighera come riferimento per il turismo botanico sulla Riviera</li>
-                            <li>Realizzazione di percorsi botanici tematici, accessibili a residenti e visitatori</li>
-                            <li>Valorizzazione dei giardini storici come destinazioni culturali</li>
-                            <li>Promozione di eventi legati al patrimonio verde e alla stagionalità delle fioriture</li>
-                            <li><strong>Obiettivo:</strong> trasformare la gestione del verde da voce di spesa a investimento strategico, identitario e turistico</li>
-                        </ul>
-
                         <div class="quote-box">
-                            Il verde, se progettato con metodo, lavora anche quando nessuno ci pensa: riduce i costi di manutenzione, migliora la qualità dell'aria, mitiga il calore estivo e aumenta il valore percepito degli spazi urbani. Non è un investimento a fondo perduto — è un investimento che genera ritorni nel tempo, in modo concreto e misurabile.
+                            Il verde, se progettato con metodo, lavora anche quando nessuno ci pensa: mitiga il calore, migliora l'aria e aumenta il valore degli spazi urbani.
                         </div>
                     </div>
                 `
             },
             sec3: {
-                title: "3. SICUREZZA E QUALITÀ DELLA VITA",
+                title: "3. SICUREZZA",
                 content: `
                     <div class="prose prose-slate max-w-none font-medium text-slate-700">
-                        <p>Una città vivibile è una città sicura. Non è una percezione: è qualcosa che si vede ogni giorno. La sicurezza si misura nella possibilità di muoversi liberamente, vivere gli spazi pubblici, frequentare il centro e i quartieri senza difficoltà, in qualsiasi momento della giornata. Oggi questo equilibrio va rafforzato, con interventi concreti e continui.</p>
-                        <p>La sicurezza non riguarda solo il controllo del territorio. Riguarda anche la qualità degli spazi urbani, l'illuminazione, il decoro e la presenza costante sul territorio.</p>
-
-                        <h3>Presidio del territorio</h3>
+                        <p>Una città vivibile è una città sicura. La sicurezza si misura nella possibilità di muoversi liberamente in ogni ora della giornata.</p>
                         <ul>
-                            <li>Maggiore presenza della Polizia Locale nelle aree più frequentate e nei quartieri</li>
-                            <li>Rafforzamento delle attività di controllo e prevenzione</li>
-                            <li>Presenza visibile e continuativa, non solo in situazioni emergenziali</li>
-                            <li>Attenzione specifica alle frazioni e alle aree periferiche, tradizionalmente meno presidiate</li>
+                            <li>Maggiore presenza della Polizia Locale nei quartieri e frazioni</li>
+                            <li>Rafforzamento attività di controllo e prevenzione</li>
+                            <li>Attivazione e manutenzione completa del sistema di videosorveglianza</li>
+                            <li>Contrasto al degrado urbano e alla sosta selvaggia</li>
                         </ul>
-
-                        <h3>Videosorveglianza e controllo</h3>
-                        <ul>
-                            <li>Attivazione e manutenzione completa delle telecamere esistenti</li>
-                            <li>Verifica costante del funzionamento del sistema</li>
-                            <li>Utilizzo efficace degli strumenti di controllo per prevenire comportamenti scorretti</li>
-                        </ul>
-
-                        <h3>Contrasto al degrado urbano</h3>
-                        <ul>
-                            <li>Interventi mirati contro situazioni di degrado e incuria</li>
-                            <li>Maggiore controllo sulla sosta selvaggia</li>
-                            <li>Azioni coordinate tra sicurezza e decoro urbano</li>
-                        </ul>
-
-                        <h3>Sicurezza negli spazi pubblici</h3>
-                        <ul>
-                            <li>Attenzione particolare alle zone più frequentate nelle ore serali, come il lungomare</li>
-                            <li>Miglioramento delle condizioni di sicurezza nei luoghi di aggregazione</li>
-                            <li>Integrazione tra illuminazione, presenza e gestione degli spazi</li>
-                            <li><strong>Obiettivo:</strong> rafforzare la sicurezza reale e percepita, migliorando la vivibilità della città in ogni quartiere e in ogni fascia oraria</li>
-                        </ul>
-
                         <div class="quote-box">
-                            La sicurezza non è solo un tema di ordine pubblico. È un elemento centrale della qualità della vita. Quando una città è sicura, cambia il modo in cui viene vissuta: le persone escono di più, frequentano gli spazi pubblici, vivono il territorio con maggiore serenità. Una città sicura è una città che le persone scelgono di vivere — e che i turisti scelgono di tornare a visitare.
+                            La sicurezza non è solo ordine pubblico. È un elemento centrale della qualità della vita. Una città sicura è una città che i turisti scelgono di tornare a visitare.
                         </div>
                     </div>
                 `
             },
             sec4: {
-                title: "4. MOBILITÀ, PARCHEGGI E ACCESSIBILITÀ",
+                title: "4. MOBILITÀ E PARCHEGGI",
                 content: `
                     <div class="prose prose-slate max-w-none font-medium text-slate-700">
-                        <p>Muoversi in città deve essere semplice. Oggi, per molti cittadini, non lo è. Traffico, difficoltà di parcheggio e scarsa ottimizzazione degli spazi esistenti rendono complicata la vita quotidiana e penalizzano il commercio. È un problema concreto, che incide ogni giorno su chi vive e lavora a Bordighera.</p>
-                        <p>Vogliamo affrontarlo con un approccio pratico, fatto di soluzioni reali e miglioramenti progressivi.</p>
-
-                        <h3>Parcheggi per residenti</h3>
+                        <p>Muoversi in città deve essere semplice. Oggi traffico e difficoltà di parcheggio penalizzano il commercio e la vita quotidiana.</p>
                         <ul>
-                            <li>Aumento degli stalli per residenti, gratuiti o a rotazione intelligente</li>
-                            <li>Agevolazioni per chi vive e lavora nelle zone centrali</li>
-                            <li>Introduzione di parcheggi rosa riservati alle mamme con bambini piccoli</li>
+                            <li>Aumento stalli per residenti</li>
+                            <li>Introduzione parcheggi rosa</li>
+                            <li>Migliore utilizzo dei parcheggi esistenti (Tennis Centro e Mercato)</li>
+                            <li>Realizzazione di nuovi parcheggi interrati o multipiano in aree critiche</li>
+                            <li>Miglioramento collegamenti con le frazioni</li>
                         </ul>
-
-                        <h3>Migliore utilizzo dei parcheggi esistenti</h3>
-                        <ul>
-                            <li>Strumenti informativi per rendere più semplice individuare i parcheggi disponibili</li>
-                            <li>Valorizzazione e utilizzo dei parcheggi oggi sottoutilizzati, come il parcheggio del Tennis Centro e quello sotto il Mercato Coperto</li>
-                        </ul>
-
-                        <h3>Razionalizzazione della sosta</h3>
-                        <ul>
-                            <li>Interventi mirati nelle aree più congestionate</li>
-                            <li>Migliore organizzazione degli spazi per ridurre disordine e inefficienze</li>
-                        </ul>
-
-                        <h3>Nuove soluzioni di sosta</h3>
-                        <ul>
-                            <li>Realizzazione di nuovi parcheggi, interrati o multipiano nelle aree più critiche, con tempi definiti e soluzioni compatibili con il territorio</li>
-                            <li>Analisi di soluzioni sostenibili e integrate con il contesto urbano</li>
-                        </ul>
-
-                        <h3>Collegamenti e accessibilità</h3>
-                        <ul>
-                            <li>Miglioramento dei collegamenti con le frazioni e l'entroterra</li>
-                            <li>Rafforzamento dei collegamenti con le città della costa e con la Costa Azzurra</li>
-                            <li>Integrazione tra mobilità privata e trasporto pubblico</li>
-                            <li>Sviluppo progressivo della mobilità dolce: percorsi ciclabili e pedonali integrati con la rete urbana</li>
-                            <li><strong>Obiettivo:</strong> rendere Bordighera una città più accessibile, ordinata e facile da vivere, per cittadini, lavoratori e visitatori</li>
-                        </ul>
-
                         <div class="quote-box">
-                            La mobilità è spesso il primo contatto che un visitatore ha con una città — e l'ultima cosa che ricorda un residente frustrato. Risolvere questi problemi non è solo una questione di comodità: è una scelta che incide direttamente sulla reputazione della città e sulla vitalità del suo commercio.
+                            La mobilità è il primo contatto che un visitatore ha con la città. Risolvere questi problemi incide direttamente sulla vitalità del commercio.
                         </div>
                     </div>
                 `
             },
             sec5: {
-                title: "5. UNA CITTÀ PER FAMIGLIE E GIOVANI",
+                title: "5. FAMIGLIE E GIOVANI",
                 content: `
                     <div class="prose prose-slate max-w-none font-medium text-slate-700">
-                        <p>Bordighera deve essere un luogo dove crescere figli e dove i giovani scelgono di restare. Oggi questo non è scontato. Servizi insufficienti, spazi limitati e opportunità ridotte rendono più difficile costruire qui il proprio progetto di vita.</p>
-                        <p>Per questo servono investimenti reali, continui e mirati. Non dichiarazioni di principio, ma interventi concreti.</p>
-
-                        <h3>Scuola e servizi educativi</h3>
+                        <p>Bordighera deve essere un luogo dove i giovani scelgono di restare. Servono investimenti reali, non solo promesse.</p>
+                        <h3>Scuola</h3>
                         <ul>
-                            <li>Investimenti concreti nelle strutture scolastiche</li>
-                            <li>Completamento urgente dei lavori della scuola dell'infanzia di Via Napoli, danneggiata dall'incendio del 2022: tre anni di attesa sono inaccettabili</li>
-                            <li>Tutela e valorizzazione della scuola Maria Primina</li>
-                            <li>Potenziamento dell'insegnamento della lingua inglese con programmi in madrelingua, coerenti con la vocazione turistica internazionale della città</li>
-                            <li>Miglioramento della qualità della mensa scolastica</li>
+                            <li>Investimenti nelle strutture scolastiche</li>
+                            <li>Completamento urgente scuola Via Napoli</li>
+                            <li>Tutela scuola Maria Primina</li>
+                            <li>Potenziamento lingua inglese con madrelingua</li>
                         </ul>
-                        <p class="font-bold">La scuola non è un costo. È l'investimento più importante sul futuro della comunità.</p>
-
-                        <h3>Spazi e opportunità per i giovani</h3>
+                        <h3>Opportunità</h3>
                         <ul>
-                            <li>Creazione di centri di aggregazione culturale e creativo</li>
-                            <li>Spazi dedicati a musica, sport e iniziative giovanili</li>
-                            <li>Supporto concreto alle associazioni locali</li>
+                            <li>Creazione centri di aggregazione creativo/culturale</li>
+                            <li>Spazi per musica e sport informale</li>
+                            <li>Sostegno all'accesso alla casa per giovani coppie</li>
                         </ul>
-                        <p class="italic text-slate-500">I giovani restano dove trovano spazi, opportunità e possibilità di esprimersi.</p>
-
-                        <h3>Sostegno alle giovani famiglie</h3>
-                        <ul>
-                            <li>Potenziamento dei servizi per l'infanzia</li>
-                            <li>Iniziative per favorire l'accesso alla casa</li>
-                            <li>Sostenere le famiglie significa scommettere sul fatto che Bordighera ha un futuro, non solo un passato.</li>
-                            <li><strong>Obiettivo:</strong> una città dove le famiglie scelgono di vivere e i giovani scelgono di restare</li>
-                        </ul>
-
                         <div class="quote-box">
-                            Costruire una città a misura di famiglie e giovani non è una scelta secondaria. È una decisione strategica. Quando una città trattiene i suoi giovani e attira nuove famiglie, cambia il suo futuro: diventa più dinamica, più equilibrata, più capace di crescere. Investire in questa direzione significa garantire continuità alla comunità e costruire le basi per uno sviluppo duraturo.
+                            La scuola non è un costo. È l'investimento più importante sul futuro. Quando una città trattiene i suoi giovani, diventa più dinamica ed equilibrata.
                         </div>
                     </div>
                 `
             },
             sec6: {
-                title: "6. POLITICHE SOCIALI, WELFARE E TERZA ETÀ",
+                title: "6. POLITICHE SOCIALI",
                 content: `
                     <div class="prose prose-slate max-w-none font-medium text-slate-700">
-                        <p>Una città funziona davvero quando nessuno resta indietro. Le politiche sociali non riguardano solo chi è in difficoltà. Riguardano la qualità della vita dell'intera comunità.</p>
-                        <p>Oggi le fragilità sono cambiate: famiglie che faticano ad arrivare a fine mese, anziani soli, persone che hanno bisogno di supporto concreto nella vita quotidiana. Serve un approccio più semplice, più coordinato, più umano.</p>
-
-                        <h3>Un sistema più semplice e coordinato</h3>
+                        <p>Una città funziona quando nessuno resta indietro. Serve un approccio più coordinato e umano.</p>
                         <ul>
-                            <li>Miglior coordinamento tra servizi sociali, sanità territoriale e terzo settore</li>
-                            <li>Collaborazione strutturata con associazioni e volontariato</li>
-                            <li>Maggiore chiarezza e accessibilità ai servizi per i cittadini</li>
-                        </ul>
-                        <p class="italic">Chi ha bisogno non deve perdersi tra procedure e uffici. Deve trovare risposte.</p>
-
-                        <h3>Sostegno alle persone e alle famiglie</h3>
-                        <ul>
-                            <li>Attenzione alle difficoltà economiche legate a casa, affitti e spese quotidiane</li>
-                            <li>Supporto alle famiglie in situazioni di fragilità</li>
-                            <li>Interventi mirati per minori e persone con disabilità</li>
-                        </ul>
-                        <p class="italic">L'obiettivo non è solo aiutare. È prevenire situazioni più gravi.</p>
-
-                        <h3>Servizi di prossimità e assistenza</h3>
-                        <ul>
-                            <li>Rafforzamento dei servizi di assistenza domiciliare</li>
-                            <li>Supporto concreto nella vita quotidiana (spesa, commissioni, accompagnamenti)</li>
-                            <li>Sviluppo di servizi di prossimità per chi ha più difficoltà</li>
-                        </ul>
-                        <p class="italic">Aiutare le persone a restare nella propria casa e nel proprio contesto è la forma più efficace di assistenza.</p>
-
-                        <h3>Terza età: non solo assistenza</h3>
-                        <ul>
-                            <li>Potenziamento dei servizi per anziani soli o con reti familiari deboli</li>
-                            <li>Spazi di incontro, socialità e attività</li>
-                            <li>Iniziative per favorire autonomia e partecipazione</li>
-                        </ul>
-                        <p class="italic">La solitudine è una delle fragilità più diffuse. Va affrontata con attenzione.</p>
-
-                        <h3>Comunità e coesione</h3>
-                        <ul>
+                            <li>Coordinamento servizi sociali, sanità e terzo settore</li>
+                            <li>Sostegno economico per affitti e spese quotidiane</li>
+                            <li>Rafforzamento assistenza domiciliare di prossimità</li>
+                            <li>Potenziamento servizi per anziani soli (socialità e autonomia)</li>
                             <li>Sostegno alle iniziative del volontariato</li>
-                            <li>Progetti che rafforzino il senso di comunità</li>
-                            <li>Collaborazione tra generazioni</li>
                         </ul>
-                        <p class="font-bold">Una città più unita è una città più forte.</p>
-                        
-                        <p><strong>Obiettivo:</strong> costruire un sistema di welfare più semplice, accessibile e vicino alle persone, capace di rispondere concretamente ai bisogni della comunità</p>
-
                         <div class="quote-box">
-                            Le politiche sociali non si misurano dalle parole, ma dalla capacità di aiutare davvero chi ne ha bisogno. Una città che si prende cura delle persone più fragili è una città che ha capito cosa significa crescere davvero.
+                            Una comunità si misura da come si prende cura delle persone più fragili. Aiutare le persone a restare nel proprio contesto è la forma più efficace di assistenza.
                         </div>
                     </div>
                 `
             },
             sec7: {
-                title: "7. SPORT E ATTIVITÀ ALL'ARIA APERTA",
+                title: "7. SPORT E OUTDOOR",
                 content: `
                     <div class="prose prose-slate max-w-none font-medium text-slate-700">
-                        <p>Lo sport non è solo attività fisica. È salute, qualità della vita e un modo concreto di vivere la città. A Bordighera lo sport può diventare un elemento centrale: per chi ci vive ogni giorno e per chi la sceglie come destinazione. Oggi questo potenziale è solo in parte espresso.</p>
-
-                        <h3>Sport per chi vive la città</h3>
+                        <p>Lo sport è salute e qualità della vita. Bordighera ha un potenziale outdoor non ancora pienamente espresso.</p>
                         <ul>
-                            <li>Miglioramento e manutenzione degli impianti sportivi esistenti</li>
-                            <li>Accesso più semplice e organizzato alle strutture</li>
-                            <li>Sostegno alle associazioni sportive locali</li>
-                            <li>Spazi accessibili a tutte le età</li>
+                            <li>Manutenzione e miglioramento impianti esistenti</li>
+                            <li>Creazione rete tra tutte le associazioni sportive</li>
+                            <li>Valorizzazione MTB, ciclismo e trekking (Montenero/Beodo)</li>
+                            <li>Eventi sportivi inseriti in strategia di destagionalizzazione</li>
+                            <li>Sport come strumento di inclusione (senza barriere)</li>
                         </ul>
-                        <p class="font-bold">Lo sport deve essere accessibile, non complicato.</p>
-
-                        <h3>Una rete dello sport cittadino</h3>
-                        <ul>
-                            <li>Creazione di una rete tra tutte le associazioni sportive del territorio</li>
-                            <li>Coordinamento tra Comune e realtà sportive</li>
-                            <li>Calendario unico degli eventi sportivi</li>
-                            <li>Strumenti digitali per promuovere attività, corsi ed eventi</li>
-                        </ul>
-                        <p class="italic">Le associazioni non devono lavorare da sole. Devono essere messe in condizione di crescere insieme.</p>
-
-                        <h3>Sport, giovani e inclusione</h3>
-                        <ul>
-                            <li>Spazi dedicati allo sport informale (basket, attività libere, aree attrezzate)</li>
-                            <li>Accesso allo sport per tutti, senza barriere</li>
-                            <li>Attenzione alle persone con disabilità e alle loro famiglie</li>
-                            <li>Collaborazione con scuole e associazioni</li>
-                        </ul>
-                        <p class="italic">Lo sport è uno strumento educativo e di inclusione.</p>
-
-                        <h3>Sport, turismo e destagionalizzazione</h3>
-                        <p>Bordighera ha tutte le caratteristiche per diventare una destinazione sportiva tutto l'anno.</p>
-                        <ul>
-                            <li>Valorizzazione di ciclismo, MTB, trekking e attività outdoor</li>
-                            <li>Eventi sportivi mirati, inseriti in una strategia e non episodici</li>
-                            <li>Collaborazioni con operatori e circuiti sportivi specializzati</li>
-                        </ul>
-                        <p class="font-bold">Lo sport porta persone quando la città è vuota.</p>
-
-                        <h3>Spazi e territorio</h3>
-                        <ul>
-                            <li>Utilizzo intelligente degli spazi pubblici per attività sportive</li>
-                            <li>Integrazione tra lungomare, percorsi e aree verdi</li>
-                            <li>Collegamento con l'entroterra e i sentieri</li>
-                        </ul>
-                        <p class="italic">Lo sport non deve essere chiuso negli impianti. Deve essere parte della città.</p>
-                        
-                        <p><strong>Obiettivo:</strong> rendere lo sport accessibile a tutti e trasformarlo in una leva di qualità della vita, inclusione e sviluppo per Bordighera</p>
-
                         <div class="quote-box">
-                            Lo sport non è un tema secondario. È uno dei modi più semplici per migliorare la vita quotidiana, coinvolgere i giovani e rendere la città più viva. Una città dove si può fare sport facilmente è una città più sana, più vissuta e più attrattiva.
+                            Lo sport non deve essere chiuso negli impianti. Deve essere parte della città, dal lungomare ai sentieri dell'entroterra.
                         </div>
                     </div>
                 `
             },
             sec8: {
-                title: "8. CULTURA COME INFRASTRUTTURA DELLA CITTÀ",
+                title: "8. CULTURA",
                 content: `
                     <div class="prose prose-slate max-w-none font-medium text-slate-700">
-                        <p>Una città che vive solo d'estate è una città fragile. Bordighera ha una storia, un patrimonio e un'identità che non possono essere vissuti solo per pochi mesi. La cultura non è un elemento accessorio. È un'infrastruttura sociale ed economica.</p>
-
-                        <h3>Programmazione culturale continua</h3>
+                        <p>La cultura è un'infrastruttura sociale ed economica. Per una città internazionale, deve essere continua e accessibile.</p>
                         <ul>
-                            <li>Palazzo del Parco come centro culturale attivo, con una programmazione annuale stabile</li>
-                            <li>Mostre, festival musicali ed eventi culturali di qualità</li>
-                            <li>Formati accessibili anche a un pubblico internazionale, non necessariamente legati alla lingua: musica, arti visive, danza, fotografia</li>
-                            <li>Calendario coordinato e comunicato in anticipo</li>
+                            <li>Palazzo del Parco come centro culturale attivo 12 mesi</li>
+                            <li>Valorizzazione identità storica (Monet, Bicknell, Belle Époque)</li>
+                            <li>Bordighera come museo a cielo aperto (segnaletica narrativa)</li>
+                            <li>Biblioteca moderna con orari ampliati e coworking</li>
+                            <li>Calendario eventi coordinato e comunicato in anticipo</li>
                         </ul>
-                        <p class="italic">La cultura deve diventare una presenza costante nella vita della città, non un evento occasionale.</p>
-
-                        <h3>Valorizzazione dell'identità storica</h3>
-                        <ul>
-                            <li>Promozione della storia di Bordighera: Monet, Bicknell, la tradizione inglese, la Belle Époque</li>
-                            <li>Iniziative culturali legate all'identità storica della città</li>
-                            <li>Integrazione tra patrimonio storico e offerta culturale contemporanea</li>
-                        </ul>
-                        <p class="font-bold">Una città riconoscibile è una città che valorizza la propria storia e la rende attuale.</p>
-
-                        <h3>Bordighera come museo a cielo aperto</h3>
-                        <p>La città è già un patrimonio: va raccontata. Alberi monumentali, ville storiche, giardini, angoli nascosti.</p>
-                        <ul>
-                            <li>Valorizzazione digitale degli elementi identitari del territorio</li>
-                            <li>Segnaletica narrativa nei luoghi di interesse storico e naturalistico</li>
-                            <li>Contenuti digitali che trasformano la passeggiata in un'esperienza culturale continua</li>
-                        </ul>
-                        <p class="italic">La cultura non deve essere confinata negli spazi chiusi, ma diffusa in tutta la città.</p>
-
-                        <h3>Biblioteca moderna e accessibile</h3>
-                        <ul>
-                            <li>Ampliamento degli orari</li>
-                            <li>Spazi di studio e coworking</li>
-                            <li>Servizi digitali e accesso facilitato</li>
-                        </ul>
-                        <p class="font-bold">La biblioteca deve diventare un luogo vivo, aperto e utilizzato ogni giorno.</p>
-                        
-                        <p><strong>Obiettivo:</strong> una città culturalmente viva dodici mesi l'anno, capace di parlare a residenti e visitatori di tutto il mondo</p>
-
                         <div class="quote-box">
-                            La cultura non è solo produzione di eventi. È un modo di costruire identità, attrarre persone e generare valore. Quando la cultura è continua e ben organizzata, la città cambia: chi arriva per un weekend tende a tornare, chi abita la città la sente più sua. Si creano le condizioni per un turismo più maturo e per una comunità più coesa.
+                            Quando la cultura è ben organizzata, chi arriva per un weekend tende a tornare. Si creano le condizioni per un turismo più maturo.
                         </div>
                     </div>
                 `
             },
             sec9: {
-                title: "9. AMBIENTE, PAESAGGIO E IDENTITÀ",
+                title: "9. AMBIENTE E PAESAGGIO",
                 content: `
                     <div class="prose prose-slate max-w-none font-medium text-slate-700">
-                        <p>Bordighera ha una caratteristica che non si può replicare: il suo equilibrio tra mare, verde e tessuto urbano. Non è solo paesaggio. È identità. Ed è il motivo per cui le persone scelgono di vivere qui o di tornarci.</p>
-
-                        <h3>Difendere ciò che rende unica la città</h3>
-                        <p>Clima, luce, vegetazione, palme, centro storico, vista sul mare: sono elementi che non possono essere dati per scontati.</p>
+                        <p>Bordighera ha un equilibrio unico tra mare, verde e città. È la nostra identità.</p>
                         <ul>
                             <li>Tutela del paesaggio e del patrimonio naturale</li>
-                            <li>Valorizzazione degli elementi identitari della città</li>
-                            <li>Protezione del centro storico di Bordighera Alta</li>
-                            <li>Arricchimento del patrimonio botanico con nuove piantumazioni coerenti con il paesaggio esistente</li>
-                        </ul>
-                        <p class="font-bold text-red-600">Perdere questi elementi significa perdere valore.</p>
-
-                        <h3>Sviluppo con una direzione chiara</h3>
-                        <p>Crescere non significa costruire senza criterio.</p>
-                        <ul>
+                            <li>Protezione centro storico di Bordighera Alta</li>
                             <li>Scelte urbanistiche coerenti con l'identità del territorio</li>
-                            <li>Attenzione alla qualità architettonica e all'inserimento nel paesaggio</li>
-                            <li>Equilibrio tra sviluppo e tutela</li>
+                            <li>Integrazione tra sostenibilità e sviluppo</li>
                         </ul>
-                        <p class="italic text-slate-500 font-bold">Non tutto ciò che si può fare deve essere fatto.</p>
-
-                        <h3>Ambiente come scelta di valore</h3>
-                        <p>Il paesaggio non è solo qualcosa da proteggere. È una risorsa strategica.</p>
-                        <ul>
-                            <li>Migliorare la qualità dell'ambiente urbano e naturale</li>
-                            <li>Integrare sostenibilità e sviluppo</li>
-                            <li>Considerare il paesaggio come elemento centrale dell'attrattività della città</li>
-                        </ul>
-                        
-                        <p><strong>Obiettivo:</strong> crescere senza perdere identità, preservando il valore paesaggistico e ambientale di Bordighera nel tempo</p>
-
                         <div class="quote-box">
-                            Bordighera non deve diventare qualcos'altro. Deve diventare la versione migliore di sé stessa. Difendere il paesaggio significa difendere il futuro della città. Perché ciò che rende Bordighera unica oggi è anche ciò che la renderà attrattiva domani.
+                            Bordighera non deve diventare qualcos'altro. Deve diventare la versione migliore di sé stessa. Difendere il paesaggio significa difendere il futuro.
                         </div>
                     </div>
                 `
             },
             sec10: {
-                title: "10. AGRICOLTURA, FLORICOLTURA E TERRITORIO",
+                title: "10. AGRICOLTURA E FLORICOLTURA",
                 content: `
                     <div class="prose prose-slate max-w-none font-medium text-slate-700">
-                        <p>La floricoltura è parte della storia di Bordighera. Non è solo tradizione: è un'opportunità concreta per il futuro. Rilanciare agricoltura e floricoltura significa recuperare il territorio, creare lavoro e generare valore.</p>
-
-                        <h3>Recuperare i terreni e il paesaggio</h3>
+                        <p>La floricoltura è la nostra storia e un'opportunità di lavoro futuro. Recuperare i terreni significa sicurezza e valore.</p>
                         <ul>
-                            <li>Incentivare il recupero dei terreni agricoli oggi incolti</li>
-                            <li>Favorire il riutilizzo produttivo delle aree abbandonate</li>
-                            <li>Valorizzare il paesaggio come elemento identitario e turistico</li>
+                            <li>Incentivi per recupero terreni agricoli incolti</li>
+                            <li>Supporto a chi lavora la terra (semplificazione burocratica)</li>
+                            <li>Favorire ingresso dei giovani nel settore</li>
+                            <li>Incentivare agricampeggi, agriturismi e glamping</li>
                         </ul>
-                        <p class="italic">Un territorio curato è più bello, più sicuro e più attrattivo.</p>
-
-                        <h3>Sostegno a chi lavora la terra</h3>
-                        <ul>
-                            <li>Supporto agli agricoltori e floricoltori locali</li>
-                            <li>Semplificazione delle procedure per chi vuole avviare o sviluppare attività agricole</li>
-                            <li>Collaborazione con enti e istituzioni per intercettare fondi e opportunità</li>
-                        </ul>
-                        <p class="italic">Chi lavora la terra deve essere messo nelle condizioni di farlo davvero.</p>
-
-                        <h3>Nuove opportunità per i giovani</h3>
-                        <ul>
-                            <li>Favorire l'ingresso dei giovani nel settore agricolo e floricolo</li>
-                            <li>Supportare nuove iniziative imprenditoriali legate al territorio</li>
-                            <li>Creare opportunità di lavoro concrete e sostenibili</li>
-                        </ul>
-                        <p class="italic">L'agricoltura può tornare ad essere una scelta, non una rinuncia.</p>
-
-                        <h3>Agricoltura e turismo</h3>
-                        <p>L'agricoltura può diventare anche una leva turistica.</p>
-                        <ul>
-                            <li>Incentivare la nascita di agriturismi, agricampeggi, glamping e attività turistiche legate alla terra</li>
-                            <li>Valorizzare esperienze autentiche a contatto con il territorio</li>
-                            <li>Integrare queste attività nella strategia turistica della città</li>
-                        </ul>
-                        <p class="italic">Questo permette di diversificare l'offerta, allungare la stagione turistica e creare nuove opportunità economiche.</p>
-
-                        <h3>Un sistema più coordinato</h3>
-                        <ul>
-                            <li>Creazione di una rete tra agricoltori, floricoltori e istituzioni</li>
-                            <li>Maggiore coordinamento tra le diverse realtà del territorio</li>
-                            <li>Supporto alla promozione e alla visibilità delle attività</li>
-                        </ul>
-                        <p class="font-bold">Da soli è difficile. Insieme diventa possibile.</p>
-                        
-                        <p><strong>Obiettivo:</strong> rilanciare agricoltura e floricoltura come risorsa economica, paesaggistica e identitaria, capace di creare lavoro e valorizzare il territorio</p>
-
-                        <div class="quote-box text-center">
+                        <div class="quote-box">
                             Investire su ciò che Bordighera è sempre stata, per costruire ciò che può tornare ad essere.
                         </div>
                     </div>
                 `
             },
             sec11: {
-                title: "11. ECONOMIA, COMMERCIO E LAVORO",
+                title: "11. ECONOMIA E COMMERCIO",
                 content: `
                     <div class="prose prose-slate max-w-none font-medium text-slate-700">
-                        <p>Una città che funziona si riconosce da tre cose concrete: ristoranti pieni, alberghi che lavorano, negozi aperti e in crescita. Quando questo accade, la città è viva. Quando non accade, significa che qualcosa nel sistema non funziona.</p>
-                        <p>Oggi il numero crescente di negozi chiusi è un segnale chiaro. Senza imprese non c'è lavoro. Senza lavoro non c'è crescita. L'obiettivo è semplice: fare di Bordighera una città amica di chi fa impresa.</p>
-
-                        <h3>Meno ostacoli, più opportunità</h3>
+                        <p>Obiettivo: fare di Bordighera una città amica di chi fa impresa. Senza imprese non c'è lavoro.</p>
                         <ul>
-                            <li>Semplificazione burocratica per chi apre o investe, con tempi certi nelle risposte del Comune</li>
-                            <li>Dialogo diretto e continuativo con imprenditori, commercianti e artigiani</li>
-                            <li>Procedure più semplici e chiare per favorire nuove attività</li>
+                            <li>Semplificazione burocratica e tempi certi nelle risposte</li>
+                            <li>Incentivi per riapertura locali sfitti</li>
+                            <li>Collegamento stretto tra eventi, turismo e commercio locale</li>
+                            <li>Dialogo costante con le categorie economiche</li>
                         </ul>
-                        <p class="italic">Chi vuole fare deve essere aiutato, non rallentato.</p>
-
-                        <h3>Riattivare i locali sfitti</h3>
-                        <ul>
-                            <li>Incentivi per nuove aperture commerciali</li>
-                            <li>Strumenti per facilitare accordi tra proprietari e imprenditori interessati</li>
-                            <li>Progetti di animazione commerciale per riportare vitalità nelle vie più colpite</li>
-                        </ul>
-                        <p class="italic">Una serranda alzata cambia una strada.</p>
-
-                        <h3>Collegare turismo e commercio</h3>
-                        <p>Il turismo deve diventare un motore per tutta l'economia locale.</p>
-                        <ul>
-                            <li>Esperienze turistiche progettate per generare flussi verso il commercio</li>
-                            <li>Percorsi enogastronomici che valorizzano le eccellenze del territorio</li>
-                            <li>Integrazione tra ospitalità, attività commerciali ed eventi</li>
-                            <li>Calendario coordinato tra eventi, strutture ricettive e commercio, comunicato con anticipo</li>
-                        </ul>
-                        <p class="font-bold">L'obiettivo non è fare eventi. È portare persone in città e far lavorare l'intero sistema.</p>
-                        
-                        <p><strong>Obiettivo:</strong> una città economicamente viva, con attività che crescono e opportunità concrete per chi vuole investire a Bordighera</p>
-
                         <div class="quote-box">
-                            Una città che sostiene chi lavora e chi investe è una città che cresce. Quando l'economia locale funziona, cambiano molte cose — e si vede. Costruire un sistema economico dinamico significa rendere Bordighera più solida, più attrattiva e più capace di affrontare il futuro.
+                            Una città che sostiene chi investe è una città che cresce. Una serranda alzata cambia il volto di una strada.
                         </div>
                     </div>
                 `
@@ -812,102 +536,32 @@
                 title: "12. TURISMO TUTTO L'ANNO",
                 content: `
                     <div class="prose prose-slate max-w-none font-medium text-slate-700">
-                        <p>Bordighera ha tutte le condizioni per essere una destinazione turistica riconosciuta a livello internazionale. Serve una strategia chiara e continuativa. Non una lista di eventi.</p>
-                        <p>Il principio: non più turismo, ma turismo migliore — più rispettoso, più distribuito e capace di generare benefici locali.</p>
-
-                        <h3>Posizionamento identitario</h3>
-                        <p>La sua identità è chiara: città giardino con un patrimonio botanico unico, storia internazionale inglese e francese, scala umana e qualità della vita che oggi è sempre più rara. Ogni azione di promozione deve partire da ciò che Bordighera è davvero.</p>
-
-                        <h3>Bordighera come base di un territorio</h3>
-                        <p>Chi soggiorna a Bordighera sceglie un territorio. Da Bordighera si raggiungono facilmente:</p>
+                        <p>Non più turismo, ma turismo migliore. Più rispettoso, più distribuito, più profittevole.</p>
                         <ul>
-                            <li>Dolceacqua</li>
-                            <li>Bussana Vecchia</li>
-                            <li>i borghi dell'entroterra</li>
-                            <li>sentieri e percorsi naturalistici</li>
+                            <li>Bordighera base ideale per esplorare l'entroterra (Dolceacqua/Bussana)</li>
+                            <li>Comunicazione strutturata sui mercati esteri (Francia/Nord Europa)</li>
+                            <li>Promozione del turismo invernale (clima mite)</li>
+                            <li>Brand territoriale coerente e riconoscibile</li>
                         </ul>
-
-                        <h3>Interventi a breve termine</h3>
-                        <ul>
-                            <li>Miglioramento immediato dell'esperienza del visitatore: decoro, segnaletica, accoglienza</li>
-                            <li>Comunicazione strutturata sui mercati esteri prioritari: Francia in primo luogo, poi Europa del Nord</li>
-                            <li>Promozione del turismo invernale: Bordighera come alternativa al freddo del Nord</li>
-                            <li>Collaborazioni con operatori e piattaforme internazionali</li>
-                            <li>Calendario annuale degli eventi definito in anticipo</li>
-                        </ul>
-
-                        <h3>Sviluppo dell'offerta turistica</h3>
-                        <ul>
-                            <li>Turismo esperienziale: percorsi tra mare, entroterra e borghi</li>
-                            <li>Turismo sportivo e outdoor: ciclismo, MTB, trekking, tennis</li>
-                            <li>Valorizzazione delle ville storiche e dei percorsi culturali tra Bordighera Alta, il Beodo e Montenero</li>
-                            <li>Coordinamento tra strutture ricettive, commercio ed eventi per creare un sistema integrato</li>
-                        </ul>
-
-                        <h3>Visione di lungo periodo</h3>
-                        <ul>
-                            <li>Bordighera come città giardino della Riviera, con un'identità botanica riconoscibile</li>
-                            <li>Sviluppo del turismo culturale: Monet, Bicknell, Belle Époque</li>
-                            <li>Costruzione di un brand territoriale coerente, riconoscibile e solido nel tempo</li>
-                        </ul>
-                        
-                        <p><strong>Obiettivo:</strong> una destinazione internazionale riconoscibile, capace di attrarre visitatori tutto l'anno e generare valore per l'intera comunità</p>
-
                         <div class="quote-box">
-                            Il turismo non è un settore separato. È ciò che tiene insieme economia, commercio, cultura e qualità della città. Quando funziona, si vede: le attività lavorano, gli spazi sono vissuti, la città è viva anche fuori stagione.
+                            Il turismo non è un settore separato: tiene insieme economia, cultura e qualità urbana.
                         </div>
                     </div>
                 `
             },
             sec13: {
-                title: "13. PORTO TURISTICO E FRONTE MARE",
+                title: "13. PORTO E FRONTE MARE",
                 content: `
                     <div class="prose prose-slate max-w-none font-medium text-slate-700">
-                        <p>Il porto è una porta d'ingresso, un punto di incontro, un elemento che incide direttamente sull'economia e sull'immagine di Bordighera.</p>
-
-                        <h3>Il porto dentro la città</h3>
-                        <p>Il porto si inserisce in uno dei tratti più suggestivi: alla fine del lungomare, sotto il paese vecchio, con continuità verso il Camin du Pipu e l'Arziglia.</p>
+                        <p>Il porto è una porta d'ingresso e deve essere parte integrante della vita cittadina.</p>
                         <ul>
-                            <li>Valorizzazione del porto come parte di un percorso urbano e panoramico</li>
-                            <li>Integrazione con i percorsi pedonali lungo la costa</li>
-                            <li>Valorizzazione delle calette e degli spazi naturali circostanti</li>
+                            <li>Valorizzazione percorso panoramico verso Arziglia</li>
+                            <li>Riqualificazione servizi e locali del porto</li>
+                            <li>Sostegno alla pesca locale e ittiturismo</li>
+                            <li>Polo per sport nautici (vela, kayak) per scuole e giovani</li>
                         </ul>
-                        <p class="italic">Bordighera deve essere vissuta come una città da scoprire, un vero e proprio museo a cielo aperto.</p>
-
-                        <h3>Qualità, decoro e servizi</h3>
-                        <ul>
-                            <li>Rinnovo e miglioramento dei locali presenti nel porto</li>
-                            <li>Riqualificazione dei servizi, a partire dai servizi igienici</li>
-                            <li>Cura delle panchine, del verde e degli spazi comuni</li>
-                            <li>Pulizia, ordine e manutenzione costante</li>
-                        </ul>
-                        <p class="font-bold">Spazi ordinati, curati e accoglienti fanno la differenza.</p>
-
-                        <h3>Economia del mare e identità</h3>
-                        <ul>
-                            <li>Valorizzazione della nautica, della pesca e delle attività marittime</li>
-                            <li>Sostegno ai pescatori locali e alla loro attività</li>
-                            <li>Sviluppo dell'offerta enogastronomica legata ai prodotti del mare</li>
-                        </ul>
-                        <p class="italic">Esperienze come l'ittiturismo funzionano perché raccontano il territorio. Vanno sostenute, organizzate e comunicate meglio.</p>
-
-                        <h3>Sport e attività sul mare</h3>
-                        <ul>
-                            <li>Punto di riferimento per sport nautici e acquatici (vela, kayak, canottaggio)</li>
-                            <li>Attività per giovani, scuole e associazioni</li>
-                            <li>Integrazione con la strategia sportiva della città</li>
-                        </ul>
-
-                        <h3>Eventi e vita del porto</h3>
-                        <ul>
-                            <li>Organizzazione di manifestazioni enogastronomiche legate ai prodotti del mare</li>
-                            <li>Utilizzo del porto come spazio vivo durante tutto l'anno</li>
-                        </ul>
-                        
-                        <p><strong>Obiettivo:</strong> rendere il porto un luogo vissuto, accessibile e integrato nella città, capace di valorizzare il territorio e generare economia, turismo e qualità urbana</p>
-
                         <div class="quote-box">
-                            Il porto può essere uno dei principali punti di forza di Bordighera. Ma solo se viene pensato come un luogo da vivere ogni giorno, non solo come un'infrastruttura. Quando funziona davvero, si vede: più persone, più attività, più qualità.
+                            Il porto deve essere vissuto ogni giorno, non solo come infrastruttura ma come centro di energia e identità marittima.
                         </div>
                     </div>
                 `
@@ -916,179 +570,66 @@
                 title: "14. PALAZZO DEL PARCO",
                 content: `
                     <div class="prose prose-slate max-w-none font-medium text-slate-700">
-                        <p>Il Palazzo del Parco è uno dei luoghi più importanti di Bordighera. Eppure, da oltre dieci anni, è fermo. Progetti annunciati. Idee cambiate. Nessuna direzione chiara.</p>
-                        <p class="font-bold text-red-600">Il problema non è capire cosa fare. È decidere davvero.</p>
-                        <p>Negli anni si è parlato di tutto: uffici, biblioteca, spazi pubblici, centro culturale. Tutto insieme. E quindi niente fino in fondo. Il risultato è sotto gli occhi di tutti.</p>
-
-                        <h3>Una scelta chiara: niente uffici, solo città</h3>
-                        <p>Il Palazzo del Parco non deve diventare un contenitore di uffici comunali. Deve diventare un luogo vissuto. Un luogo che genera vita, cultura, economia. Uno spazio aperto ai cittadini e capace di attrarre persone da fuori.</p>
-
-                        <h3>Il teatro: una risorsa da valorizzare</h3>
-                        <p>Il teatro va tutelato, migliorato e messo al centro di una programmazione stabile. Deve tornare ad essere:</p>
+                        <p>Basta uffici, torniamo alla città. Il Palazzo deve generare vita, cultura ed economia.</p>
                         <ul>
-                            <li>uno spazio vivo tutto l'anno</li>
-                            <li>un punto di riferimento per eventi, spettacoli e cultura</li>
-                            <li>un luogo capace di attrarre pubblico anche da fuori città</li>
+                            <li>Scelta definitiva: polo culturale e congressuale</li>
+                            <li>Teatro attivo tutto l'anno con programmazione stabile</li>
+                            <li>Target congressi medi e qualificati (50-150 persone)</li>
+                            <li>Riattivazione bar come punto di incontro</li>
                         </ul>
-                        <p class="italic">Accanto al teatro, anche il bar deve essere riattivato e reso funzionale: un servizio per chi frequenta il Palazzo.</p>
-
-                        <h3>Un polo per piccoli e medi congressi</h3>
-                        <p>Non dobbiamo pensare a grandi eventi da migliaia di persone. Ma possiamo diventare perfetti per un altro tipo di mercato: congressi piccoli e medi, qualificati.</p>
-                        <ul>
-                            <li>Eventi da 50, 100, 150 persone — professionisti, associazioni</li>
-                            <li>Turismo concreto, sostenibile e coerente con Bordighera</li>
-                        </ul>
-
-                        <h3>Un vero polo culturale</h3>
-                        <p>Il Palazzo deve diventare un punto di riferimento stabile per la cultura: mostre, incontri, eventi, attività per le associazioni.</p>
-
-                        <h3>Il Parco: uno spazio da vivere</h3>
-                        <p>Anche l'area esterna deve essere parte del progetto. Un luogo curato, accogliente, vivo: spazi per eventi all'aperto.</p>
-
-                        <h3>Basta cambiare idea ogni volta</h3>
-                        <p>Entro i primi mesi di amministrazione:</p>
-                        <ul>
-                            <li>definizione chiara della funzione del Palazzo</li>
-                            <li>scelta definitiva e pubblica</li>
-                            <li>impegno a non cambiarla nel tempo</li>
-                        </ul>
-
-                        <div class="quote-box text-center">
-                            <h4 class="font-black text-2xl uppercase mb-4">Un simbolo</h4>
-                            Il Palazzo del Parco può diventare il simbolo di un modo diverso di amministrare. Decidere. Partire. Completare.
+                        <div class="quote-box">
+                            Il Palazzo del Parco sarà il simbolo di un nuovo metodo: decidere, partire, completare. Senza cambiare idea ogni volta.
                         </div>
                     </div>
                 `
             },
             sec15: {
-                title: "15. SANITÀ E DIRITTO ALLA SALUTE",
+                title: "15. SANITÀ",
                 content: `
                     <div class="prose prose-slate max-w-none font-medium text-slate-700">
-                        <p>La salute non può essere messa in secondo piano. Per una città come Bordighera, disporre di servizi sanitari efficienti è fondamentale. Oggi questo tema richiede attenzione, continuità e un impegno concreto.</p>
-
-                        <h3>Ospedale Saint Charles</h3>
+                        <p>La salute è un diritto e una responsabilità politica. Servono servizi efficienti per residenti e turisti.</p>
                         <ul>
-                            <li>Difesa e rafforzamento dei servizi dell'ospedale Saint Charles</li>
-                            <li>Impegno costante nei confronti di Regione e ASL per garantire standard adeguati</li>
-                            <li>Obiettivo di un pronto soccorso realmente funzionante ed efficiente</li>
+                            <li>Difesa e rafforzamento Ospedale Saint Charles</li>
+                            <li>Pronto soccorso realmente funzionante</li>
+                            <li>Riduzione tempi di attesa servizi territoriali</li>
+                            <li>Focus su medicina preventiva e anziani</li>
                         </ul>
-                        <p class="font-bold">L'ospedale non è solo un servizio sanitario. È un presidio di sicurezza per tutto il territorio.</p>
-
-                        <h3>Servizi sanitari e assistenza</h3>
-                        <ul>
-                            <li>Rafforzamento dei servizi sanitari locali</li>
-                            <li>Migliore accesso alle prestazioni per i cittadini</li>
-                            <li>Interlocuzione attiva con ASL e Regione per la riduzione dei tempi di attesa</li>
-                            <li>Attenzione ai servizi extraospedalieri e territoriali</li>
-                            <li>Priorità alla medicina preventiva, agli anziani, alle persone con disabilità e alle famiglie</li>
-                        </ul>
-                        <p class="italic">La medicina preventiva non è un costo aggiuntivo: è un investimento che migliora la qualità della vita.</p>
-
-                        <h3>Servizi alla persona</h3>
-                        <ul>
-                            <li>Miglior coordinamento tra servizi sociali, assistenza domiciliare e strutture socio-sanitarie</li>
-                            <li>Collaborazione con il terzo settore e le realtà del territorio</li>
-                            <li>Costruzione di una rete più integrata, capace di rispondere in modo efficace</li>
-                        </ul>
-                        <p class="font-bold">Una comunità si misura da come si prende cura delle persone più fragili.</p>
-                        
-                        <p><strong>Obiettivo:</strong> garantire servizi sanitari e assistenziali adeguati, accessibili e coordinati, mettendo al centro la persona e i suoi bisogni</p>
-
                         <div class="quote-box">
-                            La sanità non è solo una competenza tecnica. È una responsabilità politica. Quando i servizi funzionano, si vede: le persone si sentono più sicure, il territorio è più vivibile, la città è più attrattiva. Rafforzare il sistema sanitario e i servizi alla persona significa costruire una comunità più solida.
+                            L'ospedale non è solo sanità: è un presidio di sicurezza per tutto il territorio.
                         </div>
                     </div>
                 `
             },
             sec16: {
-                title: "16. PIANO URBANISTICO COMUNALE (PUC)",
+                title: "16. URBANISTICA (PUC)",
                 content: `
                     <div class="prose prose-slate max-w-none font-medium text-slate-700">
-                        <p>Il Piano Urbanistico non è un documento tecnico. È la scelta più importante sul futuro della città. Decide come crescerà Bordighera nei prossimi anni.</p>
-
-                        <h3>Una visione chiara</h3>
-                        <p>La nuova pianificazione dovrà mettere al centro il cittadino per una città:</p>
+                        <p>Il PUC decide come crescerà la città. La priorità è migliorare l'esistente, non espandere a caso.</p>
                         <ul>
-                            <li>ecosostenibile</li>
-                            <li>inclusiva</li>
-                            <li>capace di innovare senza perdere la propria identità</li>
+                            <li>Rigenerazione urbana prima di nuove costruzioni</li>
+                            <li>Limitazione consumo di nuovo suolo</li>
+                            <li>Stimolo all'iniziativa privata entro regole chiare</li>
+                            <li>Piano condiviso con i cittadini fin dall'inizio</li>
                         </ul>
-
-                        <h3>Rigenerare prima di costruire</h3>
-                        <p>La priorità non è espandere. È migliorare ciò che già esiste.</p>
-                        <ul>
-                            <li>Recupero e riqualificazione degli spazi urbani</li>
-                            <li>Valorizzazione delle aree oggi sottoutilizzate o degradate</li>
-                            <li>Limitazione del consumo di nuovo suolo</li>
-                        </ul>
-                        <p class="italic">Rigenerare significa restituire valore agli spazi e permettere alle persone di viverli davvero.</p>
-
-                        <h3>Una città vivibile</h3>
-                        <ul>
-                            <li>Integrazione tra mobilità veicolare, pedonale e ciclabile</li>
-                            <li>Spazi pubblici di qualità e luoghi di aggregazione</li>
-                            <li>Progettazione del verde e del decoro urbano</li>
-                            <li>Attenzione all'utilizzo di energie sostenibili</li>
-                        </ul>
-
-                        <h3>Sviluppo e iniziativa privata</h3>
-                        <ul>
-                            <li>Stimolo all'iniziativa privata all'interno di regole chiare</li>
-                            <li>Progetti realizzabili, non teorici</li>
-                            <li>Collaborazione tra pubblico e privato</li>
-                            <li>Incentivare la nascita di nuove strutture ricettive di qualità tramite il recupero dell'esistente</li>
-                        </ul>
-                        <p class="font-bold">Il ruolo del Comune è dare una direzione, non bloccare chi vuole investire.</p>
-
-                        <h3>Un piano condiviso</h3>
-                        <ul>
-                            <li>Coinvolgimento dei cittadini fin dalle fasi iniziali</li>
-                            <li>Ascolto dei bisogni reali della comunità</li>
-                            <li>Costruzione di uno strumento efficace, autorevole e condiviso</li>
-                        </ul>
-                        
-                        <p><strong>Obiettivo:</strong> costruire uno sviluppo urbano ordinato, sostenibile e coerente con l'identità della città, capace di migliorare la qualità della vita e creare opportunità reali</p>
-
                         <div class="quote-box">
-                            Il Piano Urbanistico non è un vincolo. È uno strumento. Se fatto bene, guida lo sviluppo e migliora la città. Se fatto male, crea problemi per anni. Una città funziona quando le persone si riconoscono nelle scelte fatte.
+                            Il Piano Urbanistico è lo strumento per costruire una città ecosostenibile, inclusiva e coerente con la sua storia.
                         </div>
                     </div>
                 `
             },
             sec17: {
-                title: "17. RAPPORTO AMMINISTRAZIONE E CITTADINI",
+                title: "17. RAPPORTO AMMINISTRAZIONE/CITTADINI",
                 content: `
                     <div class="prose prose-slate max-w-none font-medium text-slate-700">
-                        <p>Una città funziona quando chi la governa ascolta chi la vive. Non solo durante le elezioni, ma ogni giorno. Il rapporto deve cambiare: più diretto, più trasparente, più continuo.</p>
-
-                        <h3>Ascolto e presenza</h3>
+                        <p>La fiducia si costruisce con l'ascolto quotidiano e la trasparenza reale.</p>
                         <ul>
-                            <li>Incontri periodici del sindaco e dell'amministrazione con i cittadini</li>
-                            <li>Presenza costante nei quartieri e nelle frazioni</li>
-                            <li>Momenti di confronto su problemi concreti e progetti</li>
+                            <li>Incontri periodici sindaco/giunta nei quartieri e frazioni</li>
+                            <li>Strumenti digitali semplici per segnalazioni e proposte</li>
+                            <li>Rendicontazione periodica su progetti e fondi</li>
+                            <li>Ascoltare significa andare a cercare i problemi prima che arrivino in ufficio</li>
                         </ul>
-                        <p class="italic">Ascoltare non significa aspettare che i problemi arrivino. Significa andarli a cercare.</p>
-
-                        <h3>Strumenti semplici e accessibili</h3>
-                        <ul>
-                            <li>Strumenti digitali per segnalazioni e proposte, facili da usare</li>
-                            <li>Risposte chiare e tempi certi sulle segnalazioni ricevute</li>
-                            <li>Canali di comunicazione diretti tra cittadini e amministrazione</li>
-                        </ul>
-                        <p class="italic">La comunicazione deve essere semplice, non complicata.</p>
-
-                        <h3>Trasparenza come metodo</h3>
-                        <ul>
-                            <li>Informazioni chiare sulle decisioni e sui progetti</li>
-                            <li>Rendicontazione periodica delle attività dell'amministrazione</li>
-                            <li>Comunicazione continua sullo stato di avanzamento dei lavori e sull'utilizzo delle risorse</li>
-                        </ul>
-                        <p class="font-bold">La trasparenza non è un momento. È un modo di lavorare.</p>
-                        
-                        <p><strong>Obiettivo:</strong> costruire un rapporto di fiducia stabile tra amministrazione e cittadini, basato su ascolto, trasparenza e responsabilità</p>
-
                         <div class="quote-box">
-                            La fiducia non si chiede. Si costruisce nel tempo. Quando i cittadini sono informati e coinvolti, la città funziona meglio. Un'amministrazione aperta e presente rende la comunità più forte, più consapevole e più partecipe.
+                            La trasparenza non è un momento, è un modo di lavorare. Un'amministrazione aperta rende la comunità più consapevole e partecipe.
                         </div>
                     </div>
                 `
@@ -1098,43 +639,23 @@
                 content: `
                     <div class="prose prose-slate max-w-none font-medium text-slate-700 leading-relaxed">
                         <p class="text-xl font-bold text-slate-900 mb-10 italic">Bordighera: una città che torna a funzionare. E torna a crescere.</p>
-                        <p>Bordighera non ha bisogno di diventare qualcos'altro. Ha bisogno di diventare la versione migliore di sé stessa.</p>
-                        
                         <div class="space-y-12 mt-12">
                             <div>
                                 <h5 class="text-blue-600 font-black uppercase text-xs tracking-widest mb-4">Una città che funziona</h5>
-                                <p>È semplice da riconoscere. È pulita, curata, ordinata. È sicura e vivibile. È facile da abitare per chi ci vive ogni giorno ed è accogliente per chi arriva. Non è teoria. È quello che ogni cittadino percepisce concretamente. Partiamo da qui.</p>
+                                <p>È pulita, curata, ordinata. È sicura e vivibile. È facile da abitare ogni giorno ed è accogliente per chi arriva.</p>
                             </div>
-
                             <div>
                                 <h5 class="text-blue-600 font-black uppercase text-xs tracking-widest mb-4">Una città che cresce</h5>
-                                <p>Crescere significa creare opportunità. Senza imprese una città si spegne. Senza lavoro non c'è futuro. Bordighera deve tornare a essere un luogo dove fare impresa è possibile, sostenibile e conveniente. Dove i ristoranti lavorano, gli alberghi funzionano, i negozi aprono invece di chiudere. Perché una città viva non si racconta: si vede.</p>
+                                <p>Crescere significa creare opportunità. Dove fare impresa è possibile, dove i negozi aprono invece di chiudere.</p>
                             </div>
-
-                            <div>
-                                <h5 class="text-blue-600 font-black uppercase text-xs tracking-widest mb-4">Una città con un'identità</h5>
-                                <p>Bordighera non può essere una località come le altre. Può diventare una scelta consapevole per chi cerca qualità, autenticità e bellezza. Una città giardino, internazionale, ma profondamente autentica.</p>
-                            </div>
-
-                            <div>
-                                <h5 class="text-blue-600 font-black uppercase text-xs tracking-widest mb-4">Una città curata e progettata</h5>
-                                <p>La bellezza non è un lusso. È una scelta. Vogliamo una Bordighera verde, curata, fiorita — ma anche progettata con criterio. Il verde giusto costa meno e rende di più. Il decoro urbano non è una spesa: è un investimento sulla qualità della vita.</p>
-                            </div>
-
-                            <div>
-                                <h5 class="text-blue-600 font-black uppercase text-xs tracking-widest mb-4">Una città dove vale la pena restare</h5>
-                                <p>Una città non vive di solo turismo. Vive se le famiglie scelgono di restare, se i giovani trovano spazio e opportunità. Questo è il vero indicatore del futuro di una città.</p>
-                            </div>
-
                             <div>
                                 <h5 class="text-blue-600 font-black uppercase text-xs tracking-widest mb-4">Un metodo diverso</h5>
-                                <p>La differenza non sta nelle promesse. Sta nel metodo: meno annunci, più cose fatte bene. Continuità nelle azioni, attenzione a come si utilizzano le risorse pubbliche, responsabilità verso i risultati.</p>
+                                <p>Meno annunci, più cose fatte bene. Responsabilità verso i risultati e attenzione maniacale all'uso delle risorse.</p>
                             </div>
                         </div>
-
                         <div class="bg-blue-600 text-white p-12 rounded-[3rem] mt-16 text-center shadow-2xl">
                             <p class="text-2xl font-black uppercase tracking-tight mb-2">Bordighera Domani.</p>
-                            <p class="text-blue-100 font-medium">Una città più semplice da vivere, più forte economicamente, più riconoscibile nel tempo.</p>
+                            <p class="text-blue-100 font-medium">Una città più semplice da vivere, più forte economicamente, più riconoscibile.</p>
                         </div>
                     </div>
                 `
@@ -1152,7 +673,7 @@
             { id: 'sec8', num: '8', title: 'Cultura' },
             { id: 'sec9', num: '9', title: 'Ambiente' },
             { id: 'sec10', num: '10', title: 'Agricoltura' },
-            { id: 'sec11', num: '11', title: 'Economia e Lavoro' },
+            { id: 'sec11', num: '11', title: 'Economia e Commercio' },
             { id: 'sec12', num: '12', title: 'Turismo' },
             { id: 'sec13', num: '13', title: 'Porto' },
             { id: 'sec14', num: '14', title: 'Palazzo del Parco' },
@@ -1193,7 +714,6 @@
 
                 container.innerHTML = `
                     <div class="page-transition">
-                        <!-- Chapter Header -->
                         <div class="bg-white border-b border-slate-200 py-20 px-4 mb-12">
                             <div class="max-w-4xl mx-auto text-center">
                                 <button onclick="showPage('home')" class="text-blue-600 font-black text-[10px] uppercase tracking-[0.4em] mb-6 hover:opacity-70 transition block mx-auto">
@@ -1203,13 +723,11 @@
                             </div>
                         </div>
 
-                        <!-- Content Body -->
                         <div class="max-w-4xl mx-auto px-4">
                             <div class="bg-white rounded-[3rem] p-10 sm:p-20 shadow-sm border border-slate-200 overflow-hidden relative">
                                 ${data.content}
                             </div>
 
-                            <!-- Dashboard Navigation Footer -->
                             <div class="flex justify-between items-center mt-12 mb-24 px-6">
                                 ${prev ? `
                                     <button onclick="showPage('${prev.id}')" class="flex flex-col items-start group">
@@ -1235,8 +753,24 @@
         function sendFeedback() {
             const name = document.getElementById('fb-name').value;
             const text = document.getElementById('fb-text').value;
-            if(!text) return;
-            alert("Feedback inviato con successo. Grazie " + (name || "") + ".");
+            
+            if(!text) {
+                alert("Inserisci un commento prima di inviare.");
+                return;
+            }
+
+            const phone = "393891131311";
+            const section = programData[currentPage] ? programData[currentPage].title : "Generale";
+            const encodedMsg = encodeURIComponent(
+                `*Feedback Programma Bordighera Domani*\n\n` +
+                `*Candidato:* ${name || 'Anonimo'}\n` +
+                `*Sezione:* ${section}\n\n` +
+                `*Feedback:* ${text}`
+            );
+
+            // Reindirizzamento WhatsApp
+            window.open(`https://wa.me/${phone}?text=${encodedMsg}`, '_blank');
+            
             document.getElementById('feedback-modal').classList.add('hidden');
             document.getElementById('fb-text').value = "";
         }
